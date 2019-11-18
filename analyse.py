@@ -1,6 +1,6 @@
 from PIL import Image
 
-im = Image.open("pictures/imageTEST2.jpg")
+im = Image.open("resultats/imgVerteACP.jpg")
 imCheat = Image.open("resultats/cheat.jpg")
 data = list(im.getdata())
 
