@@ -2,11 +2,11 @@
 from PIL import Image
 import statistics
 
-im = Image.open("resultats/imgGriseACP.jpg")
+im = Image.open("resultats/imgVerteEtGrise.jpg")
 
 #imGris = im.convert("L")
-imgF = Image.new("RGB", [1, 9])
-imgVerte = Image.new("RGB", [1,131])
+imgF = Image.new("RGB", [2, 9])
+imgVerte = Image.new("RGB", [2,131])
 
 
 iDefault = 1227
@@ -17,11 +17,11 @@ iFilter = 1228
 #    imgVerte.putpixel((0,j), px)
 
 #    pxF = im.getpixel((iFilter, j+844))
-#    imgF.putpixel((0,j), pxF)
+#    imgVerte.putpixel((1,j), pxF)
 
-#imgVerte.save("resultats/imgVerte.jpg")
+#imgVerte.save("resultats/imgVerteEtGrise.jpg")
 
-Filtre = [[-1,-2,-1],[-2,16,-2],[-1,-2,-1]]
+Filtre = [[0,-2,0],[0,16,0],[0,-2,0]]
 #Filtre = [[1,1,1],[1,1,1],[1,1,1]]
 #Filtre = [[4,2,1,0,0], [4,2,1,0,0], [4,2,1,0,0], [4,2,1,0,0], [4,2,1,0,0]]
 
@@ -43,11 +43,14 @@ def Convolution2D(Filtre,TPix,x,y):
   return (p0,p1,p2)
 
 
-for x in range(1,height-1):
+for x in range(0,height):
   #for y in range(1,width-1):
    p = Convolution2D(Filtre,im,x,1)
+   pDefault = im.getpixel((1, x-1))
+
    imgF.putpixel((0,x),p)
+   imgF.putpixel((1,x),pDefault)
    print(x, " ", 1, " : success")
 
 
-imgF.save("resultats/imgGriseFiltreeACP.jpg")
+imgF.save("resultats/imgVerteEtGriseFiltree.jpg")
