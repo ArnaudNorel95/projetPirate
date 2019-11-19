@@ -1,7 +1,7 @@
 from PIL import Image
 
-im = Image.open("resultats/imgVerteACP.jpg")
-imCheat = Image.open("resultats/cheat.jpg")
+im = Image.open("resultats/imgVerteEtGrise.jpg")
+#imCheat = Image.open("resultats/cheat.jpg")
 data = list(im.getdata())
 
 #print(data)
